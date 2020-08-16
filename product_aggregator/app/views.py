@@ -7,6 +7,7 @@ from app import serializers, models
 class ProductGenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin,
                             mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
 
+    permission_classes = [IsAuthenticated]
     serializer_class = serializers.ProductSerializer
     queryset = models.Product.objects.all()
     lookup_field = "id"

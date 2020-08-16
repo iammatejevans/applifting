@@ -1,5 +1,4 @@
 import uuid
-
 from django.db import models
 
 
@@ -20,3 +19,4 @@ class Offer(models.Model):
 
     def __str__(self):
         return self.product.name + ": " + str(self.price)
+
