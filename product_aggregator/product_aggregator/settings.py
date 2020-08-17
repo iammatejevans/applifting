@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_crontab',
     'app.apps.MyAppConfig',
 ]
 
@@ -126,3 +127,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+CRONJOBS = [
+    ('*/1 * * * *', 'app.management.commands.check_offers')
+]
