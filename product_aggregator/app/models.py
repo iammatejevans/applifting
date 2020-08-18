@@ -8,7 +8,7 @@ class Product(models.Model):
     description = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Offer(models.Model):
@@ -19,4 +19,3 @@ class Offer(models.Model):
 
     def __str__(self):
         return self.product.name + ": " + str(self.price)
-

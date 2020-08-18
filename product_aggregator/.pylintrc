@@ -1,0 +1,24 @@
+[MESSAGES CONTROL]
+
+disable=
+    too-many-ancestors,
+    missing-docstring,
+    missing-class-docstring,
+    missing-module-docstring,
+    missing-function-docstring,
+    no-member,
+    too-few-public-methods,
+    format
+
+[BASIC]
+
+# Good variable names which should always be accepted, separated by a comma
+good-names=i,_,fake,client,ip,id,q
+
+# Bad variable names which should always be refused, separated by a comma
+bad-names=foo,bar,baz,toto,tutu,tata,meow,hovno,pokus,test,bla,ahoj,kokot
+
+[FORMAT]
+
+# Maximum number of characters on a single line.
+max-line-length=120

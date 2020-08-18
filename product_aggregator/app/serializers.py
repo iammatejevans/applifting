@@ -6,10 +6,10 @@ from app import models
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Product
-        fields = '__all__'
+        fields = "__all__"
 
 
 class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Offer
-        fields = '__all__'
+        fields = "__all__"

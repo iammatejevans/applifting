@@ -1,3 +1,5 @@
+import os
+
 import requests
 
 from rest_framework import generics, mixins, status
@@ -8,8 +10,14 @@ from app import serializers, models
 from app.utils import token
 
 
-class ProductGenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin,
-                            mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
+class ProductGenericAPIView(
+    generics.GenericAPIView,
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+):
 
     permission_classes = [IsAuthenticated]
     serializer_class = serializers.ProductSerializer
@@ -28,18 +36,21 @@ class ProductGenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixi
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        url = 'https://applifting-python-excercise-ms.herokuapp.com/api/v1/products/register'
-        head = {
-            "Bearer": self.my_token
-        }
+        try:
+            url = os.environ["BASE_URL"] + "/products/register"
+        except KeyError:
+            url = "https://applifting-python-excercise-ms.herokuapp.com/api/v1/products/register"
+        head = {"Bearer": self.my_token}
         response = requests.post(url, data=serializer.data, headers=head)
         if response.status_code == 201:
             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-        elif response.status_code == 400:
-            self.my_token = token.get_token()
+        if response.status_code == 400:
+            token.get_token()
+            self.my_token = token.return_token()
             return Response(response.json(), status=status.HTTP_400_BAD_REQUEST)
-        elif response.status_code == 401:
-            self.my_token = token.get_token()
+        if response.status_code == 401:
+            token.get_token()
+            self.my_token = token.return_token()
             return Response(response.json(), status=status.HTTP_401_UNAUTHORIZED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 

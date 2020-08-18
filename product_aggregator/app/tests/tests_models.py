@@ -1,4 +1,5 @@
 from rest_framework.test import APITestCase
+
 from app.tests import factories
 from app import models
 
