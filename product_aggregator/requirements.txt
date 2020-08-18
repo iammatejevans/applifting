@@ -1,0 +1,12 @@
+black
+Django==3.1
+django-crontab
+djangorestframework==3.11.1
+djangorestframework-simplejwt
+factory-boy
+Faker
+packaging
+psycopg2
+PyJWT
+pylint
+requests

@@ -12,14 +12,14 @@ docker build -t applifting .
 ```
 4. Run the following command to start
 ```bash
-docker run -p 5000:5000 applifting
+docker run -p 8000:8000 applifting
 ```
-5. Your app will now run on 0.0.0.0:5000
+5. Your app will now run on 0.0.0.0:8000
 
 
 ## Api
 
-####Get JWToken
+#### Get JWToken
   Request Json Web Token tu authorise all future requests
   
 * **URL**
@@ -88,8 +88,8 @@ docker run -p 5000:5000 applifting
 
 <br>
 
-#### Update a product
-  Update a product name and description
+#### Change a product
+  Put (change) a product's name and description
 
 * **URL**
 
@@ -123,7 +123,7 @@ docker run -p 5000:5000 applifting
 <br>
 
 #### Get a product
-  Get a product name and description
+  Get a product's name and description
 
 * **URL**
 
