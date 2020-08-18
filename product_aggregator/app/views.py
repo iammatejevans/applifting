@@ -47,11 +47,11 @@ class ProductGenericAPIView(
         if response.status_code == 400:
             token.get_token()
             self.my_token = token.return_token()
-            return Response(response.json(), status=status.HTTP_400_BAD_REQUEST)
+            return Response("Offers microservice failed to register a product", status=status.HTTP_400_BAD_REQUEST)
         if response.status_code == 401:
             token.get_token()
             self.my_token = token.return_token()
-            return Response(response.json(), status=status.HTTP_401_UNAUTHORIZED)
+            return Response("You are not authorised to make this request", status=status.HTTP_401_UNAUTHORIZED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, product_id):
