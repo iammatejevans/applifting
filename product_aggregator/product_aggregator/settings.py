@@ -25,7 +25,7 @@ SECRET_KEY = "wvm74f^8me5l-yx6)fme1%@h=(-2y!60)=%0oxtv*@vg@-8a&n"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0"]
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "django_crontab",
     "app.apps.MyAppConfig",
 ]
 
@@ -112,5 +111,3 @@ STATIC_URL = "/static/"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework_simplejwt.authentication.JWTAuthentication",],
 }
-
-CRONJOBS = [("*/1 * * * *", "app.management.commands.check_offers")]

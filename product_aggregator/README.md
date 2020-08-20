@@ -29,7 +29,16 @@ docker run -p 8000:8000 applifting
 * **Method:**
 
   `POST`
+  
+* **Data Params**
 
+  **Required:**
+
+  `username="matej"`<br>
+  `password="applifting2020"`
+  
+  This is hardcoded in app.management.commands.init_admin.py for demonstration purposes only.
+  
 * **Success Response:**
 
   * **Code:** 200 <br>
