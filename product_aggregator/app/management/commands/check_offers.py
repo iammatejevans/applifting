@@ -12,7 +12,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         while True:
-            models.Product.objects.create(name="Krtecek", description="a fairytale")
             products = models.Product.objects.all()
 
             my_token = token.return_token()
