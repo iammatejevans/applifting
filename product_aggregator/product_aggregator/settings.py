@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "django_crontab",
     "app.apps.MyAppConfig",
 ]
 
@@ -111,3 +112,7 @@ STATIC_URL = "/static/"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework_simplejwt.authentication.JWTAuthentication",],
 }
+
+CRONJOBS = [
+    ('*/1 * * * *', 'root python manage.py check_offers')
+]
