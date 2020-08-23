@@ -1,13 +1,9 @@
 import os
-
 import requests
-from django.http import HttpResponse
 
 from rest_framework import generics, mixins, status
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, renderer_classes
 
 from app import serializers, models
 from app.utils import token
