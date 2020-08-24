@@ -1,3 +1,2 @@
-* * * * * root python manage.py check_offers
-* * * * * root /script.sh
+* * * * * /usr/bin/python3 /app/manage.py check_offers
 # An empty line is required at the end of this file for a valid cron file.

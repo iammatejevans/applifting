@@ -25,7 +25,7 @@ SECRET_KEY = "wvm74f^8me5l-yx6)fme1%@h=(-2y!60)=%0oxtv*@vg@-8a&n"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 # Application definition
@@ -114,5 +114,5 @@ REST_FRAMEWORK = {
 }
 
 CRONJOBS = [
-    ('*/1 * * * *', 'root python manage.py check_offers')
+    ("* * * * *", "/usr/bin/python3 /app/manage.py check_offers")
 ]
