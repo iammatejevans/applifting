@@ -20,5 +20,6 @@ def main():
 
 
 if __name__ == "__main__":
+    # look into the cron branch before you judge me, kind stranger
     subprocess.Popen(["python", "manage.py", "check_offers"])  # yeah this is super illegal
     main()
