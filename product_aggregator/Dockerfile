@@ -8,12 +8,9 @@ RUN python manage.py makemigrations
 RUN python manage.py migrate
 RUN python manage.py init_admin
 
-# cron attempt - it works locally tho
-ADD crontab /etc/cron.d/simple-cron
-RUN chmod 0644 /etc/cron.d/simple-cron
-RUN service cron start
+ADD crontab /var/spool/cron/crontabs/root
+RUN chmod +x /var/spool/cron/crontabs/root
+RUN chmod 0644 /var/spool/cron/crontabs/root
 
-# Second attempt, this time using django-crontab
-RUN python manage.py crontab add
-
-CMD python manage.py runserver 0.0.0.0:8000
+RUN chmod u+x /app/job.sh
+CMD /app/job.sh
