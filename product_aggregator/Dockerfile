@@ -8,4 +8,9 @@ RUN python manage.py makemigrations
 RUN python manage.py migrate
 RUN python manage.py init_admin
 
-CMD python runproject.py runserver 0.0.0.0:8000
+ADD crontab /etc/cron.d/root
+RUN chmod +x /etc/cron.d/root
+RUN chmod 0644 /etc/cron.d/root
+
+RUN chmod u+x /app/job.sh
+CMD /app/job.sh

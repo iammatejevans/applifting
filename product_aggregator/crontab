@@ -1,0 +1,4 @@
+#/bin/bash
+SHELL=/bin/bash
+* * * * * root /usr/local/bin/python /app/manage.py check_offers
+# An empty line is required at the end of this file for a valid cron file.
