@@ -8,9 +8,9 @@ RUN python manage.py makemigrations
 RUN python manage.py migrate
 RUN python manage.py init_admin
 
-ADD crontab /var/spool/cron/crontabs/root
-RUN chmod +x /var/spool/cron/crontabs/root
-RUN chmod 0644 /var/spool/cron/crontabs/root
+ADD crontab /etc/cron.d/root
+RUN chmod +x /etc/cron.d/root
+RUN chmod 0644 /etc/cron.d/root
 
 RUN chmod u+x /app/job.sh
 CMD /app/job.sh
