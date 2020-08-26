@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = "wvm74f^8me5l-yx6)fme1%@h=(-2y!60)=%0oxtv*@vg@-8a&n"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["0.0.0.0"]
 
@@ -75,7 +75,16 @@ WSGI_APPLICATION = "product_aggregator.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3",}}
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "applifting",
+        "HOST": "applifting.cmeainurkgrw.eu-central-1.rds.amazonaws.com",
+        "PORT": 3306,
+        "USER": "matej",
+        "PASSWORD": "applifting2020",
+    },
+}
 
 
 # Password validation

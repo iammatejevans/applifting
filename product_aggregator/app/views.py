@@ -2,8 +2,11 @@ import os
 import requests
 
 from rest_framework import generics, mixins, status
+from rest_framework.decorators import renderer_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 from app import serializers, models
 from app.utils import token
@@ -58,3 +61,23 @@ class ProductGenericAPIView(
 
     def delete(self, request, product_id):
         return self.destroy(request, product_id)
+
+
+@renderer_classes((JSONRenderer))
+def error404(request, e):
+    return JsonResponse({'error': f'{e}: The requested resource was not found on this server'}, status=404)
+
+
+@renderer_classes((JSONRenderer))
+def error400(request, e):
+    return JsonResponse({'error': e}, status=400)
+
+
+@renderer_classes((JSONRenderer))
+def error500(request):
+    return JsonResponse({'error': 'Internal server error'}, status=500)
+
+
+@renderer_classes((JSONRenderer))
+def error403(request, exception):
+    return JsonResponse({'error': exception}, status=403)
